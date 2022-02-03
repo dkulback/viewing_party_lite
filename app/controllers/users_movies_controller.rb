@@ -11,5 +11,14 @@ class UsersMoviesController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
   def show; end
+=======
+  def show
+    @user = User.find(params[:user_id])
+    @movie = SingleMovie.new.search(params[:id])
+    @reviews = FindReview.new.search(params[:id])
+    render 'users/movies/show'
+  end
+>>>>>>> 64635096b3cd454a46c2ad45037361d57de39ebf
 end
