@@ -1,20 +1,15 @@
 class UsersMoviesController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    if params[:top_rated].present?
-      @top_movies = TopRated.new.movies
-      render 'users/movies/index'
-    end
+    @top_movies = TopRated.new.movies if params[:top_rated].present?
   end
 
   def create
     if params[:search].present?
       @search_movie = SearchMovie.new.search(params[:search])
-      render 'users/movies/index'
+      render 'index'
     end
   end
 
-  def show
-    render 'users/movies/show'
-  end
+  def show; end
 end
