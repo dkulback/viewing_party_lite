@@ -15,6 +15,6 @@ class UsersMoviesController < ApplicationController
   end
 
   def show
-    require "pry"; binding.pry
+    render 'users/movies/show'
   end
 end
