@@ -1,6 +1,5 @@
 <div class= "discover-movies">
 
-  <%= binding.pry %>
   <%= button_to "Top Rated Movies", "/users/#{@user.id}/movies", method: :get, params: {top_rated: 'top_rated'}  %>
 
   <%= form_with url: "/users/#{@user.id}/movies", local: true do |form| %>
