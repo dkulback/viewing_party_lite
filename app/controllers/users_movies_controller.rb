@@ -2,7 +2,7 @@ class UsersMoviesController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     if params[:top_rated].present?
-      @top_movies = TopRated.new.movies
+      @top_movies = MovieServicer.top_movies
       render 'users/movies/index'
     end
   end
@@ -10,16 +10,16 @@ class UsersMoviesController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     if params[:search].present?
-      @search_movie = SearchMovie.new.search(params[:search])
+      @search_movie = MovieServicer.find_movie(params[:search])
       render 'users/movies/index'
     end
   end
 
   def show
     @user = User.find(params[:user_id])
-    @movie = SingleMovie.new.search(params[:id])
-    @reviews = FindReview.new.search(params[:id])
-    @cast = MovieFacade.cast(params[:id])
+    @movie = MovieServicer.movie_detail(params[:id])
+    @reviews = MovieServicer.reviews(params[:id])
+    @cast = MovieServicer.cast(params[:id])
     render 'users/movies/show'
   end
 end

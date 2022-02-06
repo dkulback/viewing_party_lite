@@ -76,7 +76,7 @@ VCR.configure do |config|
 
   config.default_cassette_options = {
     record: vcr_mode,
-    match_requests_on: %i[method uri body]
+    match_requests_on: %i[method uri]
   }
 
   config.allow_http_connections_when_no_cassette = false

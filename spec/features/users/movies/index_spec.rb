@@ -4,7 +4,7 @@ RSpec.describe 'Users movies page' do
   it 'has top rated movies, movies are links to movie details page' do
     user = User.create!(name: 'user', email: 'email')
 
-    VCR.use_cassette('top_rated_movies') do
+    VCR.use_cassette('top_rated_movies_index') do
       visit "/users/#{user.id}/discover"
       within '.discover-movies' do
         click_button 'Top Rated Movies'
@@ -12,7 +12,7 @@ RSpec.describe 'Users movies page' do
         expect(current_path).to eq(user_movies_path(user))
       end
     end
-    VCR.use_cassette('your_eyes_tell') do
+    VCR.use_cassette('your_eyes_tell_index') do
       within '.top-rated-movies' do
         expect(page.status_code).to eq(200)
         expect(page).to have_content('Your Eyes Tell | Vote Average: 8.8 ')

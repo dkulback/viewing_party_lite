@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Users movie show page' do
   it 'has buttons to create viewing party and to return to discovery page' do
     user = User.create!(name: 'user', email: 'email')
-    VCR.use_cassette('your_eyes_tell') do
+    VCR.use_cassette('your_eyes_tell_show') do
       visit "/users/#{user.id}/movies/730154"
       within '.buttons' do
         expect(page).to have_button('Create Viewing Party')
@@ -13,20 +13,22 @@ RSpec.describe 'Users movie show page' do
       end
     end
   end
-  it 'click create viewing party takes me to create page', :vcr do
+  it 'click create viewing party takes me to create page' do
     user = User.create!(name: 'user', email: 'email')
 
-    visit "/users/#{user.id}/movies/730154"
-    within '.buttons' do
-      click_button('Create Viewing Party')
-      expect(current_path).to eq(new_user_movie_party_path(user, '730154'))
+    VCR.use_cassette('your_eyes_tell_show viewing party') do
+      visit "/users/#{user.id}/movies/730154"
+      within '.buttons' do
+        click_button('Create Viewing Party')
+        expect(current_path).to eq(new_user_movie_party_path(user, '730154'))
+      end
     end
   end
 
   it 'has movie title, average, runtime, genre(s), summary' do
     user = User.create!(name: 'user', email: 'email')
 
-    VCR.use_cassette('your_eyes_tell') do
+    VCR.use_cassette('your_eyes_tell_show') do
       visit "/users/#{user.id}/movies/730154"
       within '.movie-info' do
         expect(page).to have_content('Title: Your Eyes Tell')
@@ -40,7 +42,7 @@ RSpec.describe 'Users movie show page' do
   it 'review count & author info' do
     user = User.create!(name: 'user', email: 'email')
 
-    VCR.use_cassette('cloud_atlas_reviews') do
+    VCR.use_cassette('cloud_atlas_reviews_show') do
       visit "/users/#{user.id}/movies/83542"
       within '.movie-info' do
         expect(page).to have_content('Total Reviews: 3')
@@ -53,7 +55,7 @@ RSpec.describe 'Users movie show page' do
   it 'lists the first ten cast members' do
     user = User.create!(name: 'user', email: 'email')
 
-    VCR.use_cassette('cloud_atlas_cast') do
+    VCR.use_cassette('cloud_atlas_cast_show') do
       visit "/users/#{user.id}/movies/83542"
       within '.movie-info' do
         expect(page).to have_content('Tom Hanks as Dr. Henry Goose')
