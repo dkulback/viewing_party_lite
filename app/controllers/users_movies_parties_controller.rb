@@ -1,12 +1,12 @@
 class UsersMoviesPartiesController < ApplicationController
   def new
     @user = User.find(params[:user_id])
-    @movie = SingleMovie.new.search(params[:movie_id])
+    @movie = MovieServicer.movie_detail(params[:movie_id])
     @users = User.all.where.not(id: params[:user_id])
   end
 
   def create
-    @movie = SingleMovie.new.search(params[:movie_id])
+    @movie = MovieServicer.movie_detail(params[:movie_id])
     if @movie.runtime.to_i > params[:duration].to_i
       flash[:duration] = "Duration can't be shorter than movies runtime."
       redirect_to new_user_movie_party_path(params[:user_id])
