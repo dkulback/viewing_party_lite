@@ -7,8 +7,8 @@ RSpec.describe Party, type: :model do
 
   describe '#find_host' do
     it 'finds a host for a party' do
-      user_3 = User.create!(name: 'user_3', email: 'test_2@gmail.com')
-      user_2 = User.create!(name: 'user_3', email: 'test_2@gmail.com')
+      user_3 = User.create!(name: 'billy', email: '5mail@gmail.com', password: '12345', password_confirmation: '12345')
+      user_2 = User.create!(name: 'billy', email: '6mail@gmail.com', password: '12345', password_confirmation: '12345')
       party_1 = Party.create!(date: '2022-02-06', duration: 160, start_time: '7:00', movie: 'Your Eyes Tell',
                               host: user_3.id, movie_id: 730_154)
       user_3.parties << party_1

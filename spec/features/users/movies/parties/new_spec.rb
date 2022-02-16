@@ -1,8 +1,8 @@
 require 'rails_helper'
 RSpec.describe 'new viewing party page' do
   it 'has title and form' do
-    user_1 = User.create!(name: 'user', email: 'email')
-    user_2 = User.create!(name: 'user 2', email: 'email_2')
+    user_1 = User.create!(name: 'billy', email: 'email@gmail.com', password: '12345', password_confirmation: '12345')
+    user_2 = User.create!(name: 'billy', email: 'email@ymail.com', password: '12345', password_confirmation: '12345')
 
     VCR.use_cassette('your_eyes_tell_new') do
       visit new_user_movie_party_path(user_1, '730154')
@@ -22,8 +22,8 @@ RSpec.describe 'new viewing party page' do
     end
   end
   it 'wont let duration of the party be shorter than runtime of the movie', :vcr do
-    user_1 = User.create!(name: 'user', email: 'email')
-    user_2 = User.create!(name: 'user 2', email: 'email_2')
+    user_1 = User.create!(name: 'billy', email: 'email@gmail.com', password: '12345', password_confirmation: '12345')
+    user_2 = User.create!(name: 'billy', email: 'email@ymail.com', password: '12345', password_confirmation: '12345')
 
     visit new_user_movie_party_path(user_1, '730154')
     within '.new-party-form' do
@@ -37,7 +37,7 @@ RSpec.describe 'new viewing party page' do
 
       click_button('Create Party')
     end
-    within '.flash' do
+    within '.duration' do
       expect(page).to have_content(/Duration can't be shorter than movies runtime./)
       expect(current_path).to eq(new_user_movie_party_path(user_1, '730154'))
     end
@@ -45,10 +45,11 @@ RSpec.describe 'new viewing party page' do
 
   it 'invites users to the party that are checked off in form' do
     VCR.use_cassette('new_movie_cassette') do
-      user_1 = User.create!(name: 'user', email: 'email')
-      user_2 = User.create!(name: 'user 2', email: 'email_2')
-      user_3 = User.create!(name: 'user 3', email: 'email_3')
-      user_4 = User.create!(name: 'user 4', email: 'email_4')
+      user_1 = User.create!(name: 'billy', email: 'email@gmail.com', password: '12345', password_confirmation: '12345')
+      user_2 = User.create!(name: 'billy', email: 'email@ymail.com', password: '12345', password_confirmation: '12345')
+
+      user_3 = User.create!(name: 'billy', email: 'email@gm4il.com', password: '12345', password_confirmation: '12345')
+      user_4 = User.create!(name: 'billy', email: 'email@ym3il.com', password: '12345', password_confirmation: '12345')
       visit new_user_movie_party_path(user_1, '730154')
       within '.new-party-form' do
         fill_in 'Duration', with: 145

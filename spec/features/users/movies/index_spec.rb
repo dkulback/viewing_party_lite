@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Users movies page' do
   it 'has top rated movies, movies are links to movie details page' do
-    user = User.create!(name: 'user', email: 'email')
-
+    user = User.create!(name: 'billy', email: 'email@gmail.com', password: '12345', password_confirmation: '12345')
     VCR.use_cassette('top_rated_movies_index') do
       visit "/users/#{user.id}/discover"
       within '.discover-movies' do
@@ -25,8 +24,7 @@ RSpec.describe 'Users movies page' do
   end
 
   it 'has a form to search for movies' do
-    user = User.create!(name: 'user', email: 'email')
-
+    user = User.create!(name: 'billy', email: 'email@gmail.com', password: '12345', password_confirmation: '12345')
     VCR.use_cassette('search_movies') do
       visit "/users/#{user.id}/discover"
       within '.discover-movies' do
