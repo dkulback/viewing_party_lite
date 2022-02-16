@@ -46,6 +46,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     arel (9.0.0)
     ast (2.4.2)
+    bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.9.1)
       msgpack (~> 1.0)
@@ -247,6 +248,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
   capybara
   coffee-rails (~> 4.2)
@@ -271,7 +273,7 @@ DEPENDENCIES
   webmock
 
 RUBY VERSION
-   ruby 2.7.4p191
+   ruby 2.7.2p137
 
 BUNDLED WITH
-   2.2.11
+   2.3.6

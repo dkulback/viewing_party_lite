@@ -7,7 +7,7 @@
 <div class ="viewing-parties">
 <div class= "invited">
   <h1>My Invitations</h1>
-  <%= @invited_parties.each do |party| %>
+  <% @invited_parties.each do |party| %>
     <p>Movie: <%= link_to party.movie, user_movie_path(@user, party.movie_id)  %></p>
     <p>Date: <%= party.date %> Time: <%= party.start_time %></p>
     <p>Host: <%= party.find_host %></p>
@@ -29,7 +29,7 @@
       <li> <%= user.name %></li>
     <% end %>
     </ul>
-      <img src="https://image.tmdb.org/t/p/original<%= @movies.find {|movie| movie.id == party.movie_id}.poster  %>" alt="Italian Trulli">
+      <img src="https://image.tmdb.org/t/p/w300<%= @movies.find {|movie| movie.id == party.movie_id}.poster  %>" alt="Italian Trulli">
   <% end %>
 </div>
  </div>

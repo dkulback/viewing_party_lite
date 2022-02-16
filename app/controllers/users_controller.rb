@@ -24,9 +24,27 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def login_form; end
+
+  def login
+    user = User.find_by(email: params[:email])
+    if user
+      if user.authenticate(params[:password])
+        session[:user_id] = user.id
+        redirect_to user_path(user), { flash: { success: "Welcome #{user.name}!" } }
+      else
+        flash[:invalid_password] = 'Invalid Password'
+        render 'login_form'
+      end
+    else
+      flash[:invalid_email] = "Couldn't find user with email #{params[:email]}"
+      render 'login_form'
+    end
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end

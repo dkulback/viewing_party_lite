@@ -1,9 +1,9 @@
 require 'rails_helper'
 RSpec.describe 'users show page' do
   it 'has user name, button to discover movies & section that lists viewing parties' do
-    user_1 = User.create!(name: 'user_1', email: 'email@gmail.com')
-    user_2 = User.create!(name: 'user_2', email: 'test@gmail.com')
-    user_3 = User.create!(name: 'user_3', email: 'test_2@gmail.com')
+    user_1 = User.create!(name: 'billy', email: '5mail@gmail.com', password: '12345', password_confirmation: '12345')
+    user_2 = User.create!(name: 'billy', email: '3mail@gmail.com', password: '12345', password_confirmation: '12345')
+    user_3 = User.create!(name: 'billy', email: '6mail@gmail.com', password: '12345', password_confirmation: '12345')
     party_1 = Party.create!(date: '2022-02-06', duration: 160, start_time: '7:00', movie: 'Your Eyes Tell',
                             host: user_1.id, movie_id: 730_154)
     party_2 = Party.create!(date: '2022-02-06', duration: 160, start_time: '7:00', movie: 'Cloud Atlas',
@@ -31,9 +31,10 @@ RSpec.describe 'users show page' do
     end
   end
   it 'shows all the movie parties a user has been invited to' do
-    user_1 = User.create!(name: 'user_1', email: 'email@gmail.com')
-    user_2 = User.create!(name: 'user_2', email: 'test@gmail.com')
-    user_3 = User.create!(name: 'user_3', email: 'test_2@gmail.com')
+    user_1 = User.create!(name: 'billy', email: '7mail@gmail.com', password: '12345', password_confirmation: '12345')
+    user_2 = User.create!(name: 'billy', email: '6mail@gmail.com', password: '12345', password_confirmation: '12345')
+    user_3 = User.create!(name: 'billy', email: '5mail@gmail.com', password: '12345', password_confirmation: '12345')
+
     party_1 = Party.create!(date: '2022-02-06', duration: 160, start_time: '7:00', movie: 'Your Eyes Tell',
                             host: user_1.id, movie_id: 730_154)
     party_2 = Party.create!(date: '2022-02-06', duration: 160, start_time: '7:00', movie: 'Cloud Atlas',
