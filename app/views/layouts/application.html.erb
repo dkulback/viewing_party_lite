@@ -13,11 +13,11 @@
     <div class="title">
       <h1>Viewing Page Party</h1>
     </div>
-   <% flash.each do |type, msg| %>
-        <div class="flash">
-          <%= msg %>
-        </div>
-      <% end %>
+
+    <% flash.each do |name, msg| %>
+      binding.pry
+      <%= content_tag :div, msg, class: name %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
