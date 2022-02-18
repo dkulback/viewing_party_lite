@@ -35,6 +35,13 @@ RSpec.describe 'landing page' do
         expect(current_path).to eq(login_path)
       end
     end
+    it 'wont let you go to a dashboard_path' do
+      visit dashboard_path
+
+      within '.alert' do
+        expect(page).to have_content('Must be logged in!')
+      end
+    end
   end
   describe 'logged in user' do
     before do
@@ -49,6 +56,16 @@ RSpec.describe 'landing page' do
         click_link 'Log Out'
 
         expect(current_path).to eq(root_path)
+      end
+    end
+    it 'has a list of users emails' do
+      user_2 = User.create!(name: 'William', email: 'email', password: '1', password_confirmation: '1')
+      user_3 = User.create!(name: 'William', email: 'gmail', password: '1', password_confirmation: '1')
+      visit root_path
+
+      within '.users' do
+        expect(page).to have_content(user_2.email)
+        expect(page).to have_content(user_3.email)
       end
     end
   end

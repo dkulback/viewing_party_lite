@@ -18,9 +18,14 @@ class UsersMoviesController < ApplicationController
 
   def show
     @user = current_user
-    @movie = MovieServicer.movie_detail(params[:id])
-    @reviews = MovieServicer.reviews(params[:id])
-    @cast = MovieServicer.cast(params[:id])
-    render 'users/movies/show'
+    if @user
+      @movie = MovieServicer.movie_detail(params[:id])
+      @reviews = MovieServicer.reviews(params[:id])
+      @cast = MovieServicer.cast(params[:id])
+      render 'users/movies/show'
+    else
+      flast[:alert] = 'You must be logged in to view movies'
+      redirect_to root_path
+    end
   end
 end

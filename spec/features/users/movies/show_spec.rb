@@ -61,4 +61,15 @@ RSpec.describe 'Users movie show page' do
       end
     end
   end
+  describe 'when not logged in' do
+    it 'redirects to landing page', :vcr do
+      visit '/movies/83542' do
+        within '.alert' do
+          expect(page).to have_content('You must be logged in to view movies')
+
+          expect(current_path).to eq(root_path)
+        end
+      end
+    end
+  end
 end
