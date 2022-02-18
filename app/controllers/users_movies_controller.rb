@@ -24,7 +24,7 @@ class UsersMoviesController < ApplicationController
       @cast = MovieServicer.cast(params[:id])
       render 'users/movies/show'
     else
-      flast[:alert] = 'You must be logged in to view movies'
+      flash[:alert] = 'You must be logged in to view movies'
       redirect_to root_path
     end
   end
