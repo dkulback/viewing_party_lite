@@ -11,8 +11,8 @@ RSpec.describe 'new user vew' do
 
     click_on 'Register'
 
-    expect(current_path).to eq(user_path(User.first))
-    expect(User.first.name).to eq('User Name')
+    expect(current_path).to eq(dashboard_path)
+    expect(User.first.name).to eq('will cob')
   end
   it 'wont register an invalid user' do
     visit register_path

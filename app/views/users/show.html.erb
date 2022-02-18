@@ -2,13 +2,13 @@
   <h2><%= @user.name %></h2>
 </div>
 <div class="discover_movies">
-  <%= button_to "Discover Movies", "/users/#{@user.id}/discover", method: :get %>
+  <%= button_to "Discover Movies", discover_path, method: :get %>
 </div>
 <div class ="viewing-parties">
 <div class= "invited">
   <h1>My Invitations</h1>
   <% @invited_parties.each do |party| %>
-    <p>Movie: <%= link_to party.movie, user_movie_path(@user, party.movie_id)  %></p>
+    <p>Movie: <%= link_to party.movie, movie_path(party.movie_id)  %></p>
     <p>Date: <%= party.date %> Time: <%= party.start_time %></p>
     <p>Host: <%= party.find_host %></p>
     <ul>
@@ -22,7 +22,7 @@
 <div class= "hosted-parties">
   <h1>MY PARTIES:</h1>
 <% @host_parties. each do |party| %>
-    <p>Movie: <%= link_to party.movie, user_movie_path(@user, party.movie_id)  %></p>
+    <p>Movie: <%= link_to party.movie, movie_path(party.movie_id)  %></p>
     <p>Date: <%= party.date %> Time: <%= party.start_time %></p>
     <ul>
     <p>Guests <% party.users.each do |user| %></p>
