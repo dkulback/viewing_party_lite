@@ -85,4 +85,87 @@ http_interactions:
         - by going from one timeline to another and slowly building up all these sub-plots
         in parallel.","created_at":"2022-01-13T07:46:54.355Z","id":"61dfd8eecb30840098d745dc","updated_at":"2022-01-15T16:15:14.896Z","url":"https://www.themoviedb.org/review/61dfd8eecb30840098d745dc"}],"total_pages":1,"total_results":3}'
   recorded_at: Sun, 06 Feb 2022 15:50:51 GMT
-recorded_with: VCR 6.0.0
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/movie/83542/reviews?api_key=<fake_api_keyi>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.2.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Tue, 15 Mar 2022 19:21:28 GMT
+      Server:
+      - openresty
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, DELETE, OPTIONS
+      Access-Control-Expose-Headers:
+      - ETag, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After,
+        Content-Length, Content-Range
+      Cache-Control:
+      - public, max-age=28800
+      X-Memc:
+      - HIT
+      X-Memc-Key:
+      - f83e80146f2f2492d71217d58f3aacd171cdf230
+      X-Memc-Age:
+      - '8906'
+      X-Memc-Expires:
+      - '7484'
+      Etag:
+      - W/"558e18036d72c502e7ef707bd70097d6"
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 ed8294655bb258e13bfb027c25483dda.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN50-C2
+      X-Amz-Cf-Id:
+      - 0IrIUbGf4tEUkiJPHiOq4hrPwu2LuRas6zu-fTLOx8FWtTBKKbAPnA==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":83542,"page":1,"results":[{"author":"Andres Gomez","author_details":{"name":"Andres
+        Gomez","username":"tanty","avatar_path":"/https://secure.gravatar.com/avatar/03a53cd53b8254fe582d4fe1acc26c4e.jpg","rating":7.0},"content":"Interesting
+        film with an exceptional cast, fantastic performances and characterizations.
+        The story, though, is a bit difficult to follow and, in the end, seems to
+        not have a real point.","created_at":"2013-05-13T15:40:41.935Z","id":"51910979760ee320eb020fc2","updated_at":"2021-06-23T15:57:21.374Z","url":"https://www.themoviedb.org/review/51910979760ee320eb020fc2"},{"author":"Travis
+        Bell","author_details":{"name":"Travis Bell","username":"travisbell","avatar_path":"/xy44UvpbTgzs9kWmp4C3fEaCl5h.png","rating":7.5},"content":"Cloud
+        Atlas was a very well made movie but unlike most of the \"simultaneous stories
+        that all come together at the end\" type of movies, this one just didn''t.
+        I''m still unclear as to the point of it all.\r\n\r\nAnother issue I had was
+        a general feeling of goofiness. Sure, the Cavendish story was pure comedy
+        but the rest of the stories just didn''t feel serious enough to me.\r\n\r\nIt
+        carried my attention for the 172 minutes well enough and it was entertaining.
+        I just expected more of a pay off at the end.\r\n\r\nAll in all, it''s definitely
+        worth seeing but I still haven''t made up my mind if I truly liked it or not.
+        What did you think?","created_at":"2013-08-13T19:46:24.499Z","id":"520a8d10760ee32c8718e6c2","updated_at":"2021-06-23T15:57:22.199Z","url":"https://www.themoviedb.org/review/520a8d10760ee32c8718e6c2"},{"author":"Vlad
+        Mihalca","author_details":{"name":"Vlad Mihalca","username":"vlad.mihalca","avatar_path":null,"rating":6.0},"content":"A
+        not-easy-to-follow film, we are presented with sub-plots from several times
+        and places, both past and future - in which the same characters seem to be
+        involved.\r\n\r\nAn interesting idea, good images but yu need to have a particular
+        taste in movies in order to fully enjoy Cloud Atlas. I feel that the average
+        audience may not be heavily impressed with they way it conveys its message
+        - by going from one timeline to another and slowly building up all these sub-plots
+        in parallel.","created_at":"2022-01-13T07:46:54.355Z","id":"61dfd8eecb30840098d745dc","updated_at":"2022-01-15T16:15:14.896Z","url":"https://www.themoviedb.org/review/61dfd8eecb30840098d745dc"}],"total_pages":1,"total_results":3}'
+  recorded_at: Tue, 15 Mar 2022 19:21:28 GMT
+recorded_with: VCR 6.1.0
