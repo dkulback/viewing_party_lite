@@ -13,12 +13,11 @@ jobs:
           POSTGRES_PASSWORD: postgres
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
-
-      - uses: actions/checkout@v1
-
-      - uses: actions/setup-ruby@v1
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@359bebbc29cbe6c87da6bc9ea3bc930432750108
         with:
-          ruby-version: 2.7.2
+          ruby-version: '2.7.2'
 
       - name: Install dependent libraries
         run: sudo apt-get install libpq-dev
