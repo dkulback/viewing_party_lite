@@ -8,17 +8,20 @@ class UsersMoviesPartiesController < ApplicationController
 
   def create
     @movie = MovieServicer.movie_detail(params[:movie_id])
+
+    movie_party = MoviePartyServicer.new({
+                                           party_date: party_date,
+                                           party_time: party_time,
+                                           user_id: params[:user_id],
+                                           invites: params[:invites],
+                                           duration: params[:duration],
+                                           movie: @movie
+                                         })
     if @movie.runtime.to_i > params[:duration].to_i
       flash[:duration] = "Duration can't be shorter than movies runtime."
       redirect_to new_movie_party_path
-    elsif party = Party.create(date: party_date, start_time: party_time, duration: params[:duration],
-                               movie: @movie.title, host: params[:user_id], movie_id: params[:movie_id])
-      UserParty.create(party_id: party.id, user_id: params[:user_id])
-      if params[:invites].present?
-        params[:invites].each do |invite|
-          UserParty.create(party_id: party.id, user_id: invite.to_i) unless invite.nil?
-        end
-      end
+    else
+      movie_party.create_party
       redirect_to dashboard_path
     end
   end
