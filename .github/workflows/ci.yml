@@ -43,4 +43,4 @@ jobs:
           RAILS_ENV: test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          movie_api_key: ${{ secrets.movie_api_key }}
+          MOVIE_API_KEY: ${{ secrets.movie_api_key }}
