@@ -17,7 +17,7 @@ class MoviePartyServicer
                          movie_id: @movie.id)
     UserParty.create(party_id: party.id, user_id: @user_id)
     if @invites
-      @invites.each do |invite|
+      @invites.map do |invite|
         UserParty.create(party_id: party.id, user_id: invite.to_i) unless invite.nil?
       end
     end
