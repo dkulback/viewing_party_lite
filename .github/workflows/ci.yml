@@ -38,9 +38,10 @@ jobs:
           POSTGRES_PASSWORD: postgres
 
       - name: Run RSpec
-        run: COVERAGE=true bundle exec rspec  --require rails_helper
         env:
-          RAILS_ENV: test
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          MOVIE_API_KEY: ${{ secrets.movie_api_key }}
+        RAILS_ENV: test
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+        movie_api_key: ${{ secrets.movie_api_key }}
+        run: COVERAGE=true bundle exec rspec  --require rails_helper
+      
