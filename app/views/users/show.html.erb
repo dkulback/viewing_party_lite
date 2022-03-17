@@ -4,6 +4,9 @@
   </p>
 </div>
 <section class='parties'>
+  <div class='card-header'>
+    <p>My Upcoming Parties: <p>
+  </div>
   <div class='container-fluid bg-dark'>
     <div class='row row-cols-9 g-9'>
       <% @parties.each do |party| %>
@@ -18,7 +21,13 @@
                 <img src="https://image.tmdb.org/t/p/w300<%= @movies.find {|movie| movie.id == party.movie_id}.poster  %>" alt="Italian Trulli">
                 Date: <%= party.date %> Time: <%= party.start_time %>
               Guests <% party.users.each do |user| %>
-              <%= user.name %>
+              <% if User.find(party.host).name == user.name %>
+                <div class="host">
+                <b><%= user.name %></b>
+                </div>
+              <%else %>
+                <%= user.name %>
+              <% end %>
             <% end %>
                 </p>
               </div>

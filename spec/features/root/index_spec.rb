@@ -14,7 +14,7 @@ RSpec.describe 'landing page' do
                            password_confirmation: '12345')
       visit root_path
       within '.title' do
-        expect(page).to have_content('Viewing Page Party')
+        expect(page).to have_content('Viewing Party!')
       end
 
       within '.new-user' do
