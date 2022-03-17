@@ -7,11 +7,28 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+<nav class="navbar navbar-expand-md navbar-dark bg-primary mb-2">
+	<a class="navbar-brand" href="<%= root_url %>">Home</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarColor02">
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="<%= discover_url %>">Discover Movies</a>
+					<span class="d-sm-inline d-md-none d-none">SM</span>
+			<li class="nav-item">
+				<a class="nav-link" href="<%= dashboard_url %>">My Dashboard</a>
+					<span class="d-sm-inline d-md-none d-none">SM</span>
+			</li>
+		</ul>
+	</div>
+</nav>
   </head>
 
   <body>
     <div class="title">
-      <h1>Viewing Page Party</h1>
+      <h1>Viewing Party!</h1>
     </div>
 
     <% flash.each do |name, msg| %>

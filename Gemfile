@@ -24,7 +24,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveMoel has_secure_password
 gem 'bcrypt'
-
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

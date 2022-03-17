@@ -12,7 +12,7 @@ class UsersMoviesPartiesController < ApplicationController
     movie_party = MoviePartyServicer.new({
                                            party_date: party_date,
                                            party_time: party_time,
-                                           user_id: params[:user_id],
+                                           user_id: current_user.id,
                                            invites: params[:invites],
                                            duration: params[:duration],
                                            movie: @movie
@@ -22,6 +22,7 @@ class UsersMoviesPartiesController < ApplicationController
       redirect_to new_movie_party_path
     else
       movie_party.create_party
+      binding.pry
       redirect_to dashboard_path
     end
   end

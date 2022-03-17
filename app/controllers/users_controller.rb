@@ -18,9 +18,8 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     if @user
-      @invited_parties = @user.invites
+      @parties = @user.parties
       @movies = @user.parties.map { |party| MovieServicer.movie_detail(party.movie_id) }
-      @host_parties = @user.hosting
     else
       flash[:alert] = 'Must be logged in!'
       redirect_to root_path
