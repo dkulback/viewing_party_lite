@@ -37,8 +37,7 @@ RSpec.describe 'landing page' do
     end
     it 'wont let you go to a dashboard_path' do
       visit dashboard_path
-
-      within '.alert' do
+      within '.user' do
         expect(page).to have_content('Must be logged in!')
       end
     end
@@ -52,8 +51,8 @@ RSpec.describe 'landing page' do
       visit root_path
 
       expect(page).to_not have_link('Log In')
-      within '.log-out' do
-        click_link 'Log Out'
+      within '.links' do
+        click_link 'Logout'
 
         expect(current_path).to eq(root_path)
       end

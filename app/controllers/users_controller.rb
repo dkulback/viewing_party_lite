@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       @parties = @user.parties
       @movies = @user.parties.map { |party| MovieServicer.movie_detail(party.movie_id) }
     else
-      flash[:alert] = 'Must be logged in!'
+      flash[:user] = 'Must be logged in!'
       redirect_to root_path
     end
   end
