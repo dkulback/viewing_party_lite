@@ -1,14 +1,18 @@
 # Viewing Party
 
-This is the base repo for the [Viewing Party Lite project](https://backend.turing.io/module3/projects/viewing_party_lite) used for Turing's Backend Module 3.
-
 ### About this Project
 
 Viewing Part Lite is an application in which users can explore movie options and create a viewing party event for themselves and other users of the application.
 
-## Setup for the use of the project
+## INTERVIEWER 
 
-1. A conveyor belt link will be sent out at project kickoff so that you can both fork and copy the project board on this base repo. 
+* visit heroku deployment of [Viewing Party Here](https://vast-badlands-91206.herokuapp.com/)
+  - register a user 
+  - click discover movies to search or get a top rated list of movies 
+  - visit a movies show page by clicking on the movie name 
+  - create a viewing party for the movie and invite other users. 
+
+
 
 ## Local Setup for any other use
 
