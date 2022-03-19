@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ViewingPartyLite</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -49,9 +48,6 @@
   </head>
 
   <body>
-    <div class="title">
-      <h1 class="text-center">Viewing Party!</h1>
-    </div>
     <% flash.each do |name, msg| %>
       <div class="alert alert-dark" role="alert">
         <%= content_tag :div, msg, class: name %>

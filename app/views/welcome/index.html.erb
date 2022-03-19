@@ -1,20 +1,17 @@
-
-<% if current_user %>
-  <div class="log-out">
-
-    <%= link_to 'Log Out', logout_path, method: :delete %>
-  <ol class= 'users'>
-    <% @users.each do |user|  %>
-      <li><%= user.email %></li>
-    <% end %>
-  </ol>
+<main>
+  <div class="container">
+    <!--Grid row-->
+    <div class="row py-5">
+      <!--Grid column-->
+      <div class="col-md-12 text-center">
+        <div class="title">
+          <h1>Welcome to Viewing Party! </h1>
+          <p>Please register to start viewing and creating movie viewing parties with your friends.</p>
+        </div>
+        <div class="new-user">
+          <a href="<%= register_url %>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Register</a>
+        </div>
+      </div>
+    </div>
   </div>
-<% else %>
-  <div class="new-user">
-    <%= button_to 'Register', '/register', method: :get %>
-  </div>
-
-  <div class="log-in">
-    <%= link_to 'Log In', login_path, method: :get %>
-  </div>
-<% end %>
+</main>
