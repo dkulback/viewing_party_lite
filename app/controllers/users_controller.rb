@@ -10,8 +10,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to dashboard_path
     else
-      flash.now[:user_errors] = 'User Not Registered'
-      render 'new'
+      flash[:user_errors] = "User Not Registered: #{@user.errors.full_messages.join(', ')}"
+      redirect_to register_path
     end
   end
 
