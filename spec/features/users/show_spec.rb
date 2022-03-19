@@ -24,22 +24,22 @@ RSpec.describe 'users show page' do
       within '.name' do
         expect(page).to have_content(user_1.name)
       end
-      within '.discover_movies' do
-        expect(page).to have_button('Discover Movies')
+      within '.links' do
+        expect(page).to have_link('Discover Movies')
       end
-      within '.viewing-parties' do
+      within '.parties' do
         expect(page).to have_content(party_1.movie)
         expect(page).to have_content(party_1.movie)
       end
-      within '.discover_movies' do
-        click_button('Discover Movies')
+      within '.links' do
+        click_link('Discover Movies')
         expect(current_path).to eq(discover_path)
       end
     end
   end
   it 'shows all the movie parties a user has been invited to' do
-    user_2 = User.create!(name: 'billy', email: '6mail@gmail.com', password: '12345', password_confirmation: '12345')
-    user_3 = User.create!(name: 'billy', email: '5mail@gmail.com', password: '12345', password_confirmation: '12345')
+    user_2 = User.create!(name: 'Jim', email: '6mail@gmail.com', password: '12345', password_confirmation: '12345')
+    user_3 = User.create!(name: 'Hogger', email: '5mail@gmail.com', password: '12345', password_confirmation: '12345')
 
     party_1 = Party.create!(date: '2022-02-06', duration: 160, start_time: '7:00', movie: 'Your Eyes Tell',
                             host: user_1.id, movie_id: 730_154)
@@ -50,11 +50,12 @@ RSpec.describe 'users show page' do
     user_3.parties << party_2
     VCR.use_cassette('user_invited_movies') do
       visit dashboard_path
-      within '.invited' do
-        expect(page).to have_css("img[src*='https://image.tmdb.org/t/p/original/amNMifaMEd0FBOR289OcnRAJjTI.jpg']")
+      within '.parties' do
+        expect(page).to have_css("img[src*='https://image.tmdb.org/t/p/w300/amNMifaMEd0FBOR289OcnRAJjTI.jpg']")
         expect(page).to have_link('Cloud Atlas')
         expect(page).to have_content("Date: #{party_2.date} Time: #{party_2.start_time}")
-        expect(page).to have_content("Host: #{user_2.name}")
+        bold = find('.host')
+        expect(bold).to have_content('Jim')
         expect(page).to have_content(user_1.name)
         expect(page).to have_content(user_3.name)
         expect(page).to have_content(user_2.name)

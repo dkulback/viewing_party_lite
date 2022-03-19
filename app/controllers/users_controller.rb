@@ -10,19 +10,18 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to dashboard_path
     else
-      flash.now[:user_errors] = 'User Not Registered'
-      render 'new'
+      flash[:user_errors] = "User Not Registered: #{@user.errors.full_messages.join(', ')}"
+      redirect_to register_path
     end
   end
 
   def show
     @user = current_user
     if @user
-      @invited_parties = @user.invites
+      @parties = @user.parties
       @movies = @user.parties.map { |party| MovieServicer.movie_detail(party.movie_id) }
-      @host_parties = @user.hosting
     else
-      flash[:alert] = 'Must be logged in!'
+      flash[:user] = 'Must be logged in!'
       redirect_to root_path
     end
   end

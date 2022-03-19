@@ -1,21 +1,57 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ViewingPartyLite</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+
+    <div class="links">
+      <nav class="navbar navbar-expand-md navbar-dark bg-primary mb-2">
+        <a class="navbar-brand" href="<%= root_url %>">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor02">
+          <ul class="navbar-nav ml-auto">
+            <% if current_user %>
+
+              <li class="nav-item">
+                <a class="nav-link" href="<%= dashboard_url %>">My Dashboard</a>
+                <span class="d-sm-inline d-md-none d-none">SM</span>
+              </li>
+
+              <li class="nav-item" id="log-out">
+                <a class="nav-link" href="<%= logout_url %>">Logout</a>
+                <span class="d-sm-inline d-md-none d-none">SM</span>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="<%= discover_url %>">Discover Movies</a>
+                <span class="d-sm-inline d-md-none d-none">SM</span>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <a class="nav-link" href="<%= discover_url %>">Discover Movies</a>
+                <span class="d-sm-inline d-md-none d-none">SM</span>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="<%= login_url %>">Login</a>
+                <span class="d-sm-inline d-md-none d-none">SM</span>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+    </div>
+      </nav>
   </head>
 
   <body>
-    <div class="title">
-      <h1>Viewing Page Party</h1>
-    </div>
-
     <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: name %>
+      <div class="alert alert-dark" role="alert">
+        <%= content_tag :div, msg, class: name %>
+      </div>
     <% end %>
     <%= yield %>
   </body>

@@ -13,7 +13,7 @@ RSpec.describe 'Discover Page' do
     VCR.use_cassette('top_rated_movies') do
       visit '/discover'
       within '.discover-movies' do
-        click_button 'Top Rated Movies'
+        click_link 'Discover!!'
 
         expect(current_path).to eq(movies_path)
       end

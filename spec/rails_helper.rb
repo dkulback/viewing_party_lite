@@ -74,11 +74,11 @@ VCR.configure do |config|
   config.hook_into :webmock
 
   config.default_cassette_options = {
-    record: vcr_mode,
+    record: :new_episodes,
     match_requests_on: %i[method uri]
   }
 
   config.allow_http_connections_when_no_cassette = false
-  config.filter_sensitive_data('fake_api_key') { ENV['movie_api_key'] }
+  config.filter_sensitive_data('<fake_api_keyi>') { ENV['movie_api_key'] }
   config.configure_rspec_metadata!
 end

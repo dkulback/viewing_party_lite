@@ -1,22 +1,36 @@
-<%= form_with model: @user, local: true do |f| %>
-    <div>
-      <div class ="error-msgs">
-        <% if @user.errors.any? %>
-          <ul>
-            <% @user.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        <% end %>
-      </div>
+<%= form_with model: @user, form: "col-lg-6 offset-lg-3", local: true do |f| %>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-2 text-center">
+      <%= f.label :name, class: 'form-check-label text-center' %>
+      <%= f.text_field :name, class: "form-control mb-2 mr-sm-2 text-center", id: "user_name", placeholder: "Enter Your Name" %>
     </div>
-  <%= f.label :user_name %>
-  <%= f.text_field :name %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  <%= f.label :password %>
-  <%= f.text_field :password %>
-  <%= f.label :password_confirmation %>
-  <%= f.text_field :password_confirmation %>
-  <%= f.submit 'Register' %>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-2 text-center">
+      <%= f.label :email, class: 'form-check-label' %>
+      <%= f.text_field :email, class: "form-control mb-2 mr-sm-2 text-center", id: "email", placeholder: "Enter email" %>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-2 text-center">
+      <%= f.label "PASSWORD", class: "form-check-label" %>
+      <%= f.text_field :password, class: "form-control mb-2 mr-sm-2 text-center", id: "user_password", placeholder: "Password" %>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-2 text-center">
+      <%= f.label "PASSWORD CONFIRMATION", class: "form-check-label" %>
+      <%= f.text_field :password_confirmation, class: 'form-control mb-2 mr-sm-2 text-center', id: "user_password_confirmation", placeholder: "Password Confirmation" %>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-2 text-center">
+      <%= f.submit 'Register', class: "btn btn-danger" %>
+    </div>
+  </div>
 <% end %>
+

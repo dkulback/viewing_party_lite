@@ -14,11 +14,11 @@ RSpec.describe 'landing page' do
                            password_confirmation: '12345')
       visit root_path
       within '.title' do
-        expect(page).to have_content('Viewing Page Party')
+        expect(page).to have_content('Viewing Party!')
       end
 
       within '.new-user' do
-        click_button 'Register'
+        click_link 'Register'
         expect(current_path).to eq(register_path)
       end
     end
@@ -29,16 +29,15 @@ RSpec.describe 'landing page' do
     it 'has a link to log in a user' do
       visit root_path
 
-      within '.log-in' do
-        click_link 'Log In'
+      within '.links' do
+        click_link 'Login'
 
         expect(current_path).to eq(login_path)
       end
     end
     it 'wont let you go to a dashboard_path' do
       visit dashboard_path
-
-      within '.alert' do
+      within '.user' do
         expect(page).to have_content('Must be logged in!')
       end
     end
@@ -52,20 +51,10 @@ RSpec.describe 'landing page' do
       visit root_path
 
       expect(page).to_not have_link('Log In')
-      within '.log-out' do
-        click_link 'Log Out'
+      within '.links' do
+        click_link 'Logout'
 
         expect(current_path).to eq(root_path)
-      end
-    end
-    it 'has a list of users emails' do
-      user_2 = User.create!(name: 'William', email: 'email', password: '1', password_confirmation: '1')
-      user_3 = User.create!(name: 'William', email: 'gmail', password: '1', password_confirmation: '1')
-      visit root_path
-
-      within '.users' do
-        expect(page).to have_content(user_2.email)
-        expect(page).to have_content(user_3.email)
       end
     end
   end

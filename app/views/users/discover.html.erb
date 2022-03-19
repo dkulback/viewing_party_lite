@@ -1,11 +1,26 @@
-<div class= "discover-movies">
+<main>
+  <div class="container">
+    <!--Grid row-->
+    <div class="row py-5">
+      <!--Grid column-->
+      <div class="col-md-12 text-center">
 
-  <%= button_to "Top Rated Movies", movies_path, method: :get, params: {top_rated: 'top_rated'}  %>
+        <div class= "discover-movies">
+          <h1>Discover new movies! </h1>
+          <p>Click link below for 20 top rated films</p>
+          <a href="/movies?top_rated=top_rated" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Discover!!</a><br>
 
-  <%= form_with url: movies_path, local: true do |form| %>
-    <%= form.label :search, 'Search For Movie by Name' %>
-    <%= form.text_field :search %>
-    <%= form.submit 'Search' %>
-  <% end %>
-
-</div>
+          <%= form_with url: movies_url, method: :get, local: true do |form| %>
+            <div class="form-group">
+              <%= form.label :search, 'Search For Movie by Name', class: "form-check-label" %>
+              <%= form.text_field :search, class: "form-control" %>
+            </div>
+            <%= form.submit 'Search' %>
+          <% end %>
+        </div>
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+</main>
