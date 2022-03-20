@@ -26,6 +26,10 @@ RSpec.describe 'Users movies page' do
         expect(page).to have_content('Vote Average: 8.7')
         expect(page).to have_content('Dilwale Dulhania Le Jayenge')
         expect(page).to have_link('Your Eyes Tell')
+        click_link 'Next'
+        expect(current_path).to eq(movies_path)
+        click_link 'Previous'
+        expect(current_path).to eq(movies_path)
         click_link('Your Eyes Tell')
         expect(current_path).to eq('/movies/730154')
       end
