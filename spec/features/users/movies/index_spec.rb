@@ -21,8 +21,10 @@ RSpec.describe 'Users movies page' do
     VCR.use_cassette('your_eyes_tell_index') do
       within '.top-rated-movies' do
         expect(page.status_code).to eq(200)
-        expect(page).to have_content('Your Eyes Tell | Vote Average: 8.7 ')
-        expect(page).to have_content('Dilwale Dulhania Le Jayenge | Vote Average: 8.7')
+
+        expect(page).to have_content('Your Eyes Tell')
+        expect(page).to have_content('Vote Average: 8.7')
+        expect(page).to have_content('Dilwale Dulhania Le Jayenge')
         expect(page).to have_link('Your Eyes Tell')
         click_link('Your Eyes Tell')
         expect(current_path).to eq('/movies/730154')
@@ -43,7 +45,7 @@ RSpec.describe 'Users movies page' do
 
       within '.search-movie' do
         expect(page.status_code).to eq(200)
-        expect(page).to have_content('Fast & Furious Presents: Hobbs & Shaw | Vote Average: 6.9')
+        expect(page).to have_content('Fast & Furious Presents: Hobbs & Shaw')
       end
     end
   end
