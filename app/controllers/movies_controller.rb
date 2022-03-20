@@ -1,7 +1,10 @@
 class MoviesController < ApplicationController
   def index
-    @top_movies = MovieServicer.top_movies if params[:top_rated].present?
-    @search_movie = MovieServicer.find_movie(params[:search]) if params[:search].present?
+    @top_movies = MovieServicer.top_movies.paginate(page: params[:page], per_page: 10) if params[:top_rated].present?
+    if params[:search].present?
+      @search_movie = MovieServicer.find_movie(params[:search]).paginate(page: params[:page],
+                                                                         per_page: 10)
+    end
   end
 
   def show
