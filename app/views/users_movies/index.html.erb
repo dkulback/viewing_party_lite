@@ -19,7 +19,7 @@
       <div class='row'>
         <% group.each do |movie| %>
           <div class='col-md-3'>
-            <img src="https://image.tmdb.org/t/p/w154<%= movie.poster %>" class="img-responsive" alt="image">
+            <div class="text-center"><img src="https://image.tmdb.org/t/p/w154<%= movie.poster %>" class="img-responsive" alt="image"></div>
             <div class="text-center"><%= link_to movie.title, movie_path(movie.id), method: :get %> </div>
             <div class="text-center">Vote Average: <%= movie.vote_avg  %></div>
           </div>
