@@ -1,18 +1,30 @@
-<div class="top-rated-movies">
-  <% if @top_movies %>
-    <ol>
-      <% @top_movies.each do |movie| %>
-        <li><%= link_to movie.title, movie_path(movie.id), method: :get %> | Vote Average: <%= movie.vote_avg  %></li>
-      <% end %>
-    </ol>
-  <% end %>
-</div>
 <div class= "search-movie">
-<% if @search_movie %>
-  <h5>Found Movies: </h5>
-  <ol>
-    <% @search_movie.each do |movie| %>
-      <li><%= link_to movie.title, movie_path(movie.id), method: :get %> | Vote Average: <%= movie.vote_avg %> </li>
-    <%end  %>
- <%end  %>
-  <ol>
+  <% if @search_movie%>
+    <% @search_movie.in_groups_of(4, false).each do |group| %>
+      <div class='row'>
+        <% group.each do |movie| %>
+          <div class='col-md-3'>
+            <img src="https://image.tmdb.org/t/p/w154<%= movie.poster %>" class="img-responsive" alt="image">
+            <div class="text-center"><%= link_to movie.title, movie_path(movie.id), method: :get %> </div>
+            <div class="text-center">Vote Average: <%= movie.vote_avg  %></div>
+          </div>
+        <% end %>
+      </div><br>
+  <% end %>
+<% end %>
+</div>
+<div class="top-rated-movies">
+  <% if @top_movies%>
+    <% @top_movies.in_groups_of(4, false).each do |group| %>
+      <div class='row'>
+        <% group.each do |movie| %>
+          <div class='col-md-3'>
+            <img src="https://image.tmdb.org/t/p/w154<%= movie.poster %>" class="img-responsive" alt="image">
+            <div class="text-center"><%= link_to movie.title, movie_path(movie.id), method: :get %> </div>
+            <div class="text-center">Vote Average: <%= movie.vote_avg  %></div>
+          </div>
+        <% end %>
+      </div><br>
+  <% end %>
+<% end %>
+</div>
