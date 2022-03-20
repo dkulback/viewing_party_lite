@@ -1,7 +1,5 @@
-class UsersMoviesController < ApplicationController
-  before_action :current_user
+class MoviesController < ApplicationController
   def index
-    @user = current_user
     @top_movies = MovieServicer.top_movies if params[:top_rated].present?
     @search_movie = MovieServicer.find_movie(params[:search]) if params[:search].present?
   end
