@@ -1,4 +1,4 @@
-class UsersMoviesPartiesController < ApplicationController
+class MoviePartiesController < ApplicationController
   before_action :current_user, only: %i[new create]
   def new
     @user = current_user
