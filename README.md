@@ -4,6 +4,9 @@
 
 Viewing Part Lite is an application in which users can explore movie options and create a viewing party event for themselves and other users of the application.
 
+## DB SCHEMA 
+![Screen Shot 2022-04-24 at 4 01 32 PM](https://user-images.githubusercontent.com/83717116/164998550-523ad8bf-379f-42e5-b704-76e21d2cdf3b.png)
+
 ## INTERVIEWER 
 
 * visit heroku deployment of [Viewing Party Here](https://vast-badlands-91206.herokuapp.com/)
