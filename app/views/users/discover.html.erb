@@ -1,15 +1,15 @@
 <main>
   <div class="container">
-    <!--Grid row-->
-    <div class="row py-5">
-      <!--Grid column-->
-      <div class="col-md-12 text-center">
-
+    <div class="row">
+      <div class="col-sm text-center">
         <div class= "discover-movies">
           <h1>Discover new movies! </h1>
           <p>Click link below for 20 top rated films</p>
-          <a href="/movies?top_rated=top_rated" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Discover!!</a><br>
+          <a href="/movies?top_rated=top_rated" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Top Rated Movie List</a><br>
 
+            </div>
+            </div>
+      <div class="col-sm text-center">
           <%= form_with url: movies_url, method: :get, local: true do |form| %>
             <div class="form-group">
               <%= form.label :search, 'Search For Movie by Name', class: "form-check-label" %>
@@ -17,10 +17,9 @@
             </div>
             <%= form.submit 'Search' %>
           <% end %>
+            </div>
         </div>
       </div>
       <!--Grid column-->
-    </div>
     <!--Grid row-->
-  </div>
 </main>
