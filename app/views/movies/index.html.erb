@@ -1,6 +1,7 @@
 <div class= "search-movie">
   <% if @search_movie%>
     <% @search_movie.in_groups_of(4, false).each do |group| %>
+    <div class='container'>
       <div class='row'>
         <% group.each do |movie| %>
           <div class='col-md-3'>
@@ -11,12 +12,14 @@
         <% end %>
       </div><br>
     <% end %>
+    </div>
     <%= will_paginate @search_movie%>
   <% end %>
 </div>
 <div class="top-rated-movies">
   <% if @top_movies%>
     <% @top_movies.in_groups_of(4, false).each do |group| %>
+    <div class='container'>
       <div class='row'>
         <% group.each do |movie| %>
           <div class='col-md-3'>
@@ -27,6 +30,7 @@
         <% end %>
       </div><br>
     <% end %>
+    </div>
     <div class="center-text">
     <%= will_paginate @top_movies %>
     </div>
