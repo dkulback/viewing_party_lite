@@ -37,7 +37,7 @@
               </div>
               <div class='card-body'>
                 <p class='card-text'>
-                <img src="https://image.tmdb.org/t/p/w300<%= @movies.find {|movie| movie.id == party.movie_id}.poster  %>" alt="Italian Trulli">
+                <img src="https://image.tmdb.org/t/p/w300<%=  party.poster %>" alt="Italian Trulli">
                 Date: <%= party.date %> Time: <%= party.start_time %>
               Guests <% party.users.each do |user| %>
               <% if User.find(party.host).name == user.name %>

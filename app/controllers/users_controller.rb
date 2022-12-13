@@ -17,7 +17,6 @@ class UsersController < ApplicationController
 
   def show
     @parties = @user.parties
-    @movies = @user.parties.map { |party| MovieServicer.movie_detail(party.movie_id) }
   end
 
   def discover

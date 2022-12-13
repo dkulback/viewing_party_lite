@@ -5,4 +5,8 @@ class Party < ApplicationRecord
   def find_host
     users.find(host).name
   end
+
+  def poster
+    MovieServicer.movie_detail(movie_id).poster
+  end
 end
