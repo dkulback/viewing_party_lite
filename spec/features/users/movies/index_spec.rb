@@ -13,7 +13,7 @@ RSpec.describe 'Users movies page' do
     VCR.use_cassette('top_rated_movies_index') do
       visit '/discover'
       within '.discover-movies' do
-        click_link 'Discover!!'
+        click_link 'Top Rated Movie List'
 
         expect(current_path).to eq(movies_path)
       end
@@ -39,7 +39,7 @@ RSpec.describe 'Users movies page' do
   it 'has a form to search for movies' do
     VCR.use_cassette('search_movies') do
       visit '/discover'
-      within '.discover-movies' do
+      within '.form-group' do
         fill_in 'search', with: 'Shaw'
 
         click_on 'Search'

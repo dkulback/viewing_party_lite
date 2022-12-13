@@ -6,20 +6,19 @@
           <h1>Discover new movies! </h1>
           <p>Click link below for 20 top rated films</p>
           <a href="/movies?top_rated=top_rated" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Top Rated Movie List</a><br>
-
-            </div>
-            </div>
-      <div class="col-sm text-center">
-          <%= form_with url: movies_url, method: :get, local: true do |form| %>
-            <div class="form-group">
-              <%= form.label :search, 'Search For Movie by Name', class: "form-check-label" %>
-              <%= form.text_field :search, class: "form-control" %>
-            </div>
-            <%= form.submit 'Search' %>
-          <% end %>
-            </div>
         </div>
       </div>
-      <!--Grid column-->
-    <!--Grid row-->
+      <div class="col-sm text-center">
+        <%= form_with url: movies_url, method: :get, local: true do |form| %>
+          <div class="form-group">
+            <%= form.label :search, 'Search For Movie by Name', class: "form-check-label" %>
+            <%= form.text_field :search, class: "form-control" %>
+            <%= form.submit 'Search' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <!--Grid column-->
+  <!--Grid row-->
 </main>
