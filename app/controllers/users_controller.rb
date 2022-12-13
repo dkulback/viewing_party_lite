@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :current_user, only: %i[show discover]
+  before_action :current_user, :check_user, only: %i[show discover]
   def new
     @user = User.new
   end
@@ -16,14 +16,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
-    if @user
-      @parties = @user.parties
-      @movies = @user.parties.map { |party| MovieServicer.movie_detail(party.movie_id) }
-    else
-      flash[:user] = 'Must be logged in!'
-      redirect_to root_path
-    end
+    @parties = @user.parties
+    @movies = @user.parties.map { |party| MovieServicer.movie_detail(party.movie_id) }
   end
 
   def discover
@@ -31,6 +25,14 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def check_user
+    @user = current_user
+    if @user.nil?
+      flash[:user] = 'Must be logged in!'
+      redirect_to root_path
+    end
+  end
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
