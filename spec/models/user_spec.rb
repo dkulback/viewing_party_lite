@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe 'relationships / validations' do
     it { should have_many(:user_parties) }
+    it { should have_many(:friends) }
     it { should have_many(:parties).through(:user_parties) }
 
     it { should validate_presence_of(:email) }
@@ -55,6 +56,20 @@ RSpec.describe User, type: :model do
       user.parties << party_3
       actual = user.invites
       expected = [party_1, party_3]
+    end
+  end
+  describe '#user_list' do
+    it 'lists all users excpet for yourself and ones youve added' do
+      user = User.create!(name: 'Bill', email: 'Willy@hotmail.com', password: '12345', password_confirmation: '12345')
+      user2 = User.create!(name: 'John', email: 'John@hotmail.com', password: '12345', password_confirmation: '12345')
+      user3 = User.create!(name: 'Chris', email: 'Chris@hotmail.com', password: '12345', password_confirmation: '12345')
+      user4 = User.create!(name: 'Chris', email: 'Christr@hotmail.com', password: '12345',
+                           password_confirmation: '12345')
+      user.friends.create!(friend_id: user4.id)
+      actual = user.user_list
+      expected = [user2, user3]
+
+      expect(actual).to eq(expected)
     end
   end
 end
