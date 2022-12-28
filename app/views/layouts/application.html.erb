@@ -16,19 +16,20 @@
         <div class="collapse navbar-collapse" id="navbarColor02">
           <ul class="navbar-nav ml-auto">
             <% if current_user %>
-
               <li class="nav-item">
                 <a class="nav-link" href="<%= dashboard_url %>">My Dashboard</a>
                 <span class="d-sm-inline d-md-none d-none">SM</span>
               </li>
-
-              <li class="nav-item" id="log-out">
-                <a class="nav-link" href="<%= logout_url %>">Logout</a>
+              <li class="nav-item">
+                <a class="nav-link" href="<%= users_url %>">Browse Users</a>
                 <span class="d-sm-inline d-md-none d-none">SM</span>
               </li>
-
               <li class="nav-item">
                 <a class="nav-link" href="<%= discover_url %>">Discover Movies</a>
+                <span class="d-sm-inline d-md-none d-none">SM</span>
+              </li>
+              <li class="nav-item" id="log-out">
+                <a class="nav-link" href="<%= logout_url %>">Logout</a>
                 <span class="d-sm-inline d-md-none d-none">SM</span>
               </li>
             <% else %>
