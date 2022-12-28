@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-  before_action :current_user, :check_user, only: %i[show discover]
+  before_action :current_user, :check_user, only: %i[index show discover]
+
+  def index
+    @users = current_user.user_list
+  end
+
   def new
     @user = User.new
   end
