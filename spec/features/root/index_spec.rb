@@ -47,6 +47,12 @@ RSpec.describe 'landing page' do
       allow_any_instance_of(ApplicationController)
         .to receive(:current_user).and_return(user_1)
     end
+    it 'has a link in the navbar to browse other users' do
+      visit root_path
+      within '.links' do
+        expect(page).to have_link('Browse Users')
+      end
+    end
     it 'doesnt have links to log in a user but has log out links' do
       visit root_path
 
