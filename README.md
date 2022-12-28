@@ -21,7 +21,7 @@ Viewing Part Lite is an application in which users can explore movie options and
 
 1. Fork and Clone the repo
 2. Install gem packages: `bundle install`
-3. Setup the database: `rails db:create`
+3. Setup the database: `rake db:{drop,create,migrate}`
 
 
 ## Versions
