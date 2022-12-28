@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
-  resources :users, only: %i[show create]
+  resources :users, only: %i[index show create] do
+    resources :friends, only: %i[create], controller: :user_friends
+  end
   get '/dashboard', to: 'users#show'
   get '/discover', to: 'users#discover'
   post '/discover', to: 'users#discover'
