@@ -1,11 +1,11 @@
 <div class="name">
   <p class="text-center">
-  <h7>Hello <%= @user.name %></h7>
+  <h7>User: <%= @user.name %></h7>
   </p>
 </div>
 <section class='parties'>
   <div class='card-header'>
-    <% if @parties.empty? %>
+    <% if @user.parties.empty? %>
       <main>
         <div class="container">
           <!--Grid row-->
@@ -13,7 +13,7 @@
             <!--Grid column-->
             <div class="col-md-12 text-center">
               <div class="title">
-                <h1>You have no upcoming viewing parties :)</h1>
+                <h1><%= @user.name %> has no upcoming viewing parties :)</h1>
                 <p>Visit the discover page to explore movie titles</p>
                 <div class="new-user">
                   <a href="<%= discover_url %>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Moives!!!</a>
@@ -24,7 +24,7 @@
         </div>
       </main>
     <% else  %>
-      <p>My Upcoming Parties: <p>
+      <p><%=@user.name %>'s Upcoming Parties: <p>
   </div>
   <div class='container-fluid bg-dark'>
     <div class='row row-cols-9 g-9'>
