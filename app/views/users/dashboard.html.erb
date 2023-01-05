@@ -1,0 +1,60 @@
+<div class="name">
+  <p class="text-center">
+  <h7>Hello <%= @user.name %></h7>
+  </p>
+</div>
+<section class='parties'>
+  <div class='card-header'>
+    <% if @parties.empty? %>
+      <main>
+        <div class="container">
+          <!--Grid row-->
+          <div class="row py-5">
+            <!--Grid column-->
+            <div class="col-md-12 text-center">
+              <div class="title">
+                <h1>You have no upcoming viewing parties :)</h1>
+                <p>Visit the discover page to explore movie titles</p>
+                <div class="new-user">
+                  <a href="<%= discover_url %>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Moives!!!</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    <% else  %>
+      <p>My Upcoming Parties: <p>
+  </div>
+  <div class='container-fluid bg-dark'>
+    <div class='row row-cols-9 g-9'>
+      <% @parties.each do |party| %>
+        <div class="row-md-5">
+          <div class='p-3'>
+            <div class='card text-center border-dark' style='width: 22rem;'>
+              <div class='card-header'>
+                <p>Movie: <%= link_to party.movie, movie_path(party.movie_id)  %></p>
+              </div>
+              <div class='card-body'>
+                <p class='card-text'>
+                <img src="https://image.tmdb.org/t/p/w300<%=  party.poster %>" alt="Italian Trulli">
+                Date: <%= party.date %> Time: <%= party.start_time %>
+              Guests <% party.users.each do |user| %>
+              <% if User.find(party.host).name == user.name %>
+                <div class="host">
+                  <b><%= user.name %></b>
+                </div>
+              <%else %>
+                <%= user.name %>
+              <% end %>
+            <% end %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+</section>
