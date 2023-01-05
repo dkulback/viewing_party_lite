@@ -68,7 +68,7 @@ RSpec.describe 'new viewing party page' do
       end
       visit user_path(user_2)
       within '.parties' do
-        expect(page).to have_content('My Upcoming Parties')
+        expect(page).to have_content("cob's Upcoming Parties:")
       end
     end
   end
