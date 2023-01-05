@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :current_user, :check_user, only: %i[index show discover]
+  before_action :current_user, :check_user, only: %i[index discover dashboard]
+  before_action :set_user, only: %i[show]
 
   def index
     @users = current_user.user_list
@@ -20,7 +21,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
+  def show; end
+
+  def dashboard
     @parties = @user.parties
   end
 
@@ -35,6 +38,14 @@ class UsersController < ApplicationController
     if @user.nil?
       flash[:user] = 'Must be logged in!'
       redirect_to root_path
+    end
+  end
+
+  def set_user
+    @user = begin
+      User.friendly.find(params[:id])
+    rescue StandardError
+      not_found
     end
   end
 
