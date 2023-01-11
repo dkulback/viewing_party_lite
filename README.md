@@ -4,17 +4,23 @@
 
 Viewing Part Lite is an application in which users can explore movie options and create a viewing party event for themselves and other users of the application.
 
-## DB SCHEMA 
+## DB SCHEMA
 ![Screen Shot 2022-04-24 at 4 01 32 PM](https://user-images.githubusercontent.com/83717116/164998550-523ad8bf-379f-42e5-b704-76e21d2cdf3b.png)
 
-## INTERVIEWER 
+## INTERVIEWER
 
 * visit heroku deployment of [Viewing Party Here](https://vast-badlands-91206.herokuapp.com/)
-  - register a user 
-  - click discover movies to search or get a top rated list of movies 
-  - visit a movies show page by clicking on the movie name 
-  - create a viewing party for the movie and invite other users. 
-
+  - register a user
+  - click discover movies to search or get a top rated list of movies
+  - visit a movies show page by clicking on the movie name
+  - create a viewing party for the movie and invite other users.
+* Configurations
+  - REST Rails Application with the exception of the following URLS
+	- /discover /dashboard
+  - Authentication using Rubys BCRYPT gem
+  - Authorization on the conrtoller level redirecting visitors who are not
+    registered
+  - CRUD
 
 
 ## Local Setup for any other use
