@@ -18,7 +18,7 @@ Viewing Part Lite is an application in which users can explore movie options and
   - REST Rails Application with the exception of the following URLS
 	- /discover /dashboard
   - Authentication using Rubys BCRYPT gem
-  - Authorization on the conrtoller level redirecting visitors who are not
+  - Authorization on the controller level by redirecting visitors who are not
     registered
   - CRUD
 
