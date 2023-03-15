@@ -1,37 +1,25 @@
-FROM ruby:2.7.7-alpine3.16
+# Base image
+FROM ruby:2.7.7
 
-RUN apk add --no-cache \
-    build-base \
-    postgresql-dev \
-    nodejs \
-    yarn \
-    postgresql-client
+# Install dependencies
+RUN apt-get update && \
+    apt-get install -y postgresql-client nodejs && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV APP_HOME /app
+# Set working directory
+WORKDIR /app
 
-RUN mkdir $APP_HOME
-WORKDIR $APP_HOME
+# Install gems
+COPY Gemfile Gemfile.lock ./
+RUN gem install bundler -v 2.2.26 && \
+    bundle install --jobs 4 --retry 3
 
-COPY Gemfile Gemfile.lock $APP_HOME/
-RUN bundle install --binstubs
+# Copy application code
+COPY . .
 
-COPY . $APP_HOME
+# Expose port
+EXPOSE 3000
 
-# Configure Postgres
-ENV POSTGRES_USER=party \
-    POSTGRES_PASSWORD=party \
-    POSTGRES_DB=viewing_party
-
-RUN mkdir -p /var/run/postgresql && chown -R postgres /var/run/postgresql
-
-USER postgres
-RUN initdb -D /var/lib/postgresql/data
-RUN pg_ctl start -D /var/lib/postgresql/data &&\
-    psql --command "CREATE USER $POSTGRES_USER WITH SUPERUSER PASSWORD '$POSTGRES_PASSWORD';" &&\
-    createdb -O $POSTGRES_USER $POSTGRES_DB &&\
-    pg_ctl stop -D /var/lib/postgresql/data
-
-USER root
-
-# Start Rails server
-CMD ["sh", "-c", "rails db:migrate && rails server -b 0.0.0.0"]
+# Start the application
+CMD ["rails", "server", "-b", "0.0.0.0"]
